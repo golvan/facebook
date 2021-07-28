@@ -7,6 +7,8 @@ window.cdh_settings = {
 		"name": "Mary Romano",
 		"avatar": "MaryRomano.jpg",
 		"sitelogo": "uplus.png",
-		"sitecaption": "U+ Comms"
+		"sitecaption": "U+ Comms",
+		"feedlogo": "upluslogo.jpg",
+		"feedcaption": "U+ Comms"
 	}
 }

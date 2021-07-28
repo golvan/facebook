@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function getYear() {
+  return new Date().getFullYear();
+}
+
 function LeftSidebar() {
   const classes = useStyles();
   let avatar = config.data.avatar;
@@ -130,7 +134,7 @@ function LeftSidebar() {
         <ListItem>
           <Typography variant="caption" style={{ color: "#65676b" }}>
             Privacy · Terms · Advertising · Ad choices <br />
-            Cookies . More . Facebook © 2021
+            Cookies . More . Facebook © {getYear()}
           </Typography>
         </ListItem>
       </List>

@@ -15,6 +15,7 @@ import comment from "./../../resources/commonimages/commentaction.png";
 import share from "./../../resources/commonimages/shareaction.png";
 import { Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import config from '../../config';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,13 +40,14 @@ const useStyles = makeStyles((theme) => ({
 const Offers = (props) => {
   const classes = useStyles();
   const { offers } = props;
+  const data = config.data;
   if (!offers || offers.length === 0) return null;
   let offerName = offers[0].Name;
   let offerDesc = offers[0].ShortDescription;
   let offerClickURL = offers[0].ClickThroughURL;
   let offerImage = offers[0].ImageURL;
-  let offerTitle = offers[0].FBAdLogoTitle;
-  let offerLogo = offers[0].FBAdLogoUrl;
+  let offerTitle = offers[0].FBAdLogoTitle !== "" ? offers[0].FBAdLogoTitle : data.feedcaption;
+  let offerLogo = offers[0].FBAdLogoUrl !== "" ? offers[0].FBAdLogoUrl : require(`./../../resources/feeds/${data.feedlogo}`);
 
   return userdata.posts.map((post, i) => (
     <div
