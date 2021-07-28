@@ -1,6 +1,6 @@
 window.settings = {
-	baseUrl: "http://localhost",
-	customerID: "anonymous",
+	baseUrl: window.location.origin,
+	customerID: "U-",
 	containerName: "NextBestAction",
 	channel: "Web",
 	apiVersion: "V2",

@@ -8,7 +8,6 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { userdata } from "./../../resources/data/userdata";
 import { Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import config from "../../config";
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const Offers = (props) => {
   const classes = useStyles();
   const { offers } = props;
-  const data = config.userdata;
+  const userdata = config.userdata;
   if (!offers || offers.length === 0) return null;
   const offerName = offers[0].Name;
   const offerDesc = offers[0].ShortDescription;
@@ -45,11 +44,11 @@ const Offers = (props) => {
   const offerTitle =
     offers[0].FBAdLogoTitle !== ""
       ? offers[0].FBAdLogoTitle
-      : data.defaultfeedcaption;
+      : userdata.defaultfeedcaption;
   const offerLogo =
     offers[0].FBAdLogoUrl !== ""
       ? offers[0].FBAdLogoUrl
-      : `./resources/feeds/${data.defaultfeedlogo}`;
+      : `./resources/feeds/${userdata.defaultfeedlogo}`;
 
   return userdata.posts.map((post, i) => (
     <div
