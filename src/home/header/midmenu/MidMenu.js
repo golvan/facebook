@@ -5,9 +5,9 @@ import Tab from "@material-ui/core/Tab";
 
 import HomeIcon from "@material-ui/icons/Home";
 import "./MidMenu.css";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#1a77f2",
@@ -49,7 +49,7 @@ function MidMenu() {
             icon={
               <svg
                 viewBox="0 0 28 28"
-                class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
+                className="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
                 height="28"
                 width="28"
                 fill="#757575"
@@ -63,7 +63,7 @@ function MidMenu() {
             icon={
               <svg
                 viewBox="0 0 28 28"
-                class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
+                className="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
                 height="28"
                 width="28"
                 fill="#757575"
@@ -77,7 +77,7 @@ function MidMenu() {
             icon={
               <svg
                 viewBox="0 0 28 28"
-                class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
+                className="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
                 height="28"
                 width="28"
                 fill="#757575"
@@ -91,7 +91,7 @@ function MidMenu() {
             icon={
               <svg
                 viewBox="0 0 28 28"
-                class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
+                className="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv"
                 height="28"
                 width="28"
                 fill="#757575"

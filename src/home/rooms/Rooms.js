@@ -3,12 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Avatar from "@material-ui/core/Avatar";
 import { red } from "@material-ui/core/colors";
-import { userdata } from "./../../resources/data/userdata";
-import rooms from "./../../resources/commonimages/rooms.png";
 import Grid from "@material-ui/core/Grid";
 import "./Rooms.css";
 import { IconButton, Typography } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Rooms() {
   const classes = useStyles();
+  const userdata = config.userdata;
   return (
     <div
       style={{
@@ -65,7 +65,11 @@ export default function Rooms() {
       <Card className={classes.root}>
         <Grid container style={{ marginBottom: "10px" }}>
           <Grid item lg={1}>
-            <img alt="dp" width="30px" src={rooms} />
+            <img
+              alt="dp"
+              width="30px"
+              src="./resources/commonimages/rooms.png"
+            />
           </Grid>
           <Grid item lg={9}>
             <Typography style={{ display: "inline" }}>Rooms</Typography>
@@ -83,12 +87,12 @@ export default function Rooms() {
         </Grid>
         <div style={{ display: "flex" }}>
           {userdata.friends.map((x, i) => (
-            <IconButton className={classes.roomicons}>
+            <IconButton key={i} className={classes.roomicons}>
               <Avatar>
                 <img
                   alt="dp"
                   width="40px"
-                  src={require(`./../../resources/friends/friend${i}.jpg`)}
+                  src={`./resources/friends/friend${i}.jpg`}
                 />
               </Avatar>
             </IconButton>

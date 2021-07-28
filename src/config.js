@@ -1,2 +1,2 @@
-const config = window.cdh_settings;
+const config = window.settings;
 export default config;

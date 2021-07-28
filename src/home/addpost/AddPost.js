@@ -4,15 +4,12 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import { red } from "@material-ui/core/colors";
-import video from "./../../resources/commonimages/video.png";
-import photovideo from "./../../resources/commonimages/photovideo.png";
-import feelingactivity from "./../../resources/commonimages/feelingactivity.png";
 import InputBase from "@material-ui/core/InputBase";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import "./AddPost.css";
-import config from '../../config';
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AddPost() {
-  let avatar = config.data.avatar;
-  let name = config.data.name;
+  const avatar = config.userdata.avatar;
+  const name = config.userdata.name;
   const classes = useStyles();
   return (
     <div
@@ -68,7 +65,11 @@ export default function AddPost() {
         <Grid container style={{ marginBottom: "10px" }}>
           <Grid item lg={1}>
             <Avatar aria-label="recipe" className={classes.avatar}>
-              <img alt="dp" width="40px" src={require(`./../../resources/profilepic/${avatar}`)} />
+              <img
+                alt="dp"
+                width="40px"
+                src={`./resources/profilepic/${avatar}`}
+              />
             </Avatar>
           </Grid>
           <Grid item lg={11}>
@@ -89,7 +90,13 @@ export default function AddPost() {
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="a" style={{ width: "25px" }} src={video} />}
+            startIcon={
+              <img
+                alt="a"
+                style={{ width: "25px" }}
+                src="./resources/commonimages/video.png"
+              />
+            }
           >
             <span className="btntxt">Live Video</span>
           </Button>
@@ -97,7 +104,11 @@ export default function AddPost() {
             variant="text"
             className={classes.actionbuttons}
             startIcon={
-              <img alt="b" style={{ width: "25px" }} src={photovideo} />
+              <img
+                alt="b"
+                style={{ width: "25px" }}
+                src="./resources/commonimages/photovideo.png"
+              />
             }
           >
             <span className="btntxt">Photo/Video</span>
@@ -106,7 +117,11 @@ export default function AddPost() {
             variant="text"
             className={classes.actionbuttons}
             startIcon={
-              <img alt="c" style={{ width: "25px" }} src={feelingactivity} />
+              <img
+                alt="c"
+                style={{ width: "25px" }}
+                src="./resources/commonimages/feelingactivity.png"
+              />
             }
           >
             <span className="btntxt">Feelings/Activity</span>
