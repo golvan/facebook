@@ -8,14 +8,10 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { userdata } from "./../../resources/data/userdata";
 import "./Feed.css";
-import publicicon from "./../../resources/commonimages/publicicon.png";
-import like from "./../../resources/commonimages/likeaction.png";
-import comment from "./../../resources/commonimages/commentaction.png";
-import share from "./../../resources/commonimages/shareaction.png";
 import { Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,8 +35,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Rooms() {
   const classes = useStyles();
+  const userdata = config.userdata;
   return userdata.posts.map((post, i) => (
     <div
+      key={i}
       style={{
         marginTop: "20px",
         width: "600px",
@@ -57,7 +55,7 @@ export default function Rooms() {
               <img
                 alt="dp"
                 width="40px"
-                src={require(`./../../resources/feeds/${post.feedpostedbyimgname}`)}
+                src={`./resources/feeds/${post.feedpostedbyimgname}`}
               />
             </Avatar>
           }
@@ -72,7 +70,7 @@ export default function Rooms() {
             <div>
               <span>{post.time}</span>
               <img
-                src={publicicon}
+                src="./resources/commonimages/publicicon.png"
                 alt="pub"
                 style={{
                   width: "12px",
@@ -88,14 +86,15 @@ export default function Rooms() {
         </CardContent>
         <CardMedia
           className={classes.media}
-          image={require(`./../../resources/feeds/${post.feedimagename}`)}
-          title="Paella dish"
+          image={`./resources/feeds/${post.feedimagename}`}
+          title={post.postdescription}
         />
 
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites" style={{ padding: 0 }}>
             {post.reactions.map((reaction, i) => (
               <img
+                key={i}
                 style={{
                   width: "20px",
                   border: "2px solid #fff",
@@ -103,7 +102,7 @@ export default function Rooms() {
                   right: `${4 * i}px`,
                   zIndex: 10 - i,
                 }}
-                src={require(`./../../resources/commonimages/${reaction}.svg`)}
+                src={`./resources/commonimages/${reaction}.svg`}
                 alt=""
               />
             ))}
@@ -119,21 +118,39 @@ export default function Rooms() {
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="a" style={{ width: "20px" }} src={like} />}
+            startIcon={
+              <img
+                alt="a"
+                style={{ width: "20px" }}
+                src="./resources/commonimages/likeaction.png"
+              />
+            }
           >
             <span className="btntxt">Like</span>
           </Button>
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="b" style={{ width: "20px" }} src={comment} />}
+            startIcon={
+              <img
+                alt="b"
+                style={{ width: "20px" }}
+                src="./resources/commonimages/commentaction.png"
+              />
+            }
           >
             <span className="btntxt">Comment</span>
           </Button>
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="c" style={{ width: "20px" }} src={share} />}
+            startIcon={
+              <img
+                alt="c"
+                style={{ width: "20px" }}
+                src="./resources/commonimages/shareaction.png"
+              />
+            }
           >
             <span className="btntxt">Share</span>
           </Button>

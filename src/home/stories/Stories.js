@@ -5,11 +5,10 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import "./Stories.css";
 import AddIcon from "@material-ui/icons/Add";
-import { userdata } from "./../../resources/data/userdata";
 import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import config  from '../../config';
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Stories() {
   const classes = useStyles();
-  let avatar = config.data.avatar;
+  const userdata = config.userdata;
+  const avatar = userdata.avatar;
   return (
     <div
       style={{
@@ -73,39 +73,39 @@ function Stories() {
         className={classes.gridList}
         cols={5}
       >
-
         <GridListTile>
-            <img src={require(`./../../resources/profilepic/${avatar}`)} alt="img" style={{ height: "70%" }} />
-            <GridListTileBar
-              className="colorblack"
-              style={{
-                padding: "15px 0",
-                textAlign: "center",
-                backgroundColor: "#fff",
-              }}
-              title="Create a story"
-              actionIcon={
-                <span>
-                  <AddIcon className="iconbg" />
-                </span>
-              }
-            />
+          <img
+            src={`./resources/profilepic/${avatar}`}
+            alt="img"
+            style={{ height: "70%" }}
+          />
+          <GridListTileBar
+            className="colorblack"
+            style={{
+              padding: "15px 0",
+              textAlign: "center",
+              backgroundColor: "#fff",
+            }}
+            title="Create a story"
+            actionIcon={
+              <span>
+                <AddIcon className="iconbg" />
+              </span>
+            }
+          />
         </GridListTile>
 
         {userdata.stories.map((story, i) => (
-          <GridListTile>
+          <GridListTile key={i}>
             <Avatar className={classes.storyavatar}>
               <img
                 alt="dp"
                 width="35px"
                 style={{ borderRadius: "30px" }}
-                src={require(`./../../resources/friends/${story.postedbyimagename}`)}
+                src={`./resources/friends/${story.postedbyimagename}`}
               />
             </Avatar>
-            <img
-              src={require(`./../../resources/stories/${story.imagename}`)}
-              alt="img"
-            />
+            <img src={`./resources/stories/${story.imagename}`} alt="img" />
 
             <GridListTileBar
               style={{ backgroundColor: "transparent", color: "#fff" }}

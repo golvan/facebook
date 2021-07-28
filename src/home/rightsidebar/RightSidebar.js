@@ -3,13 +3,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import { userdata } from "./../../resources/data/userdata";
 import Grid from "@material-ui/core/Grid";
-import sponsored1 from "./../../resources/sponsoredimages/sponsored1.jpg";
-import sponsored2 from "./../../resources/sponsoredimages/sponsored2.jpg";
-import birthday from "./../../resources/commonimages/birthday.png";
-import yourpages1 from "./../../resources/commonimages/yourpages1.png";
-import createpromotion from "./../../resources/commonimages/createpromotion.png";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import "./RightSidebar.css";
@@ -18,6 +12,7 @@ import { Typography } from "@material-ui/core";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import SearchIcon from "@material-ui/icons/Search";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   small: {
@@ -42,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function LeftSidebar() {
+function RightSidebar() {
   const classes = useStyles();
+  const userdata = config.userdata;
   return (
     <div className="fullheight" style={{ marginTop: "10px" }}>
       <List>
@@ -56,7 +52,7 @@ function LeftSidebar() {
               alt="sponsored1"
               width="126px"
               className="roundedborder"
-              src={sponsored1}
+              src="./resources/sponsoredimages/sponsored1.jpg"
             />
           </ListItemAvatar>
           <ListItemText
@@ -71,7 +67,7 @@ function LeftSidebar() {
               alt="sponsored2"
               width="126px"
               className="roundedborder"
-              src={sponsored2}
+              src="./resources/sponsoredimages/sponsored2.jpg"
             />
           </ListItemAvatar>
           <ListItemText
@@ -98,7 +94,11 @@ function LeftSidebar() {
         <ListItem>
           <ListItemAvatar>
             <Avatar className={classes.small}>
-              <img alt="dp" width="36px" src={yourpages1} />
+              <img
+                alt="dp"
+                width="36px"
+                src="./resources/commonimages/yourpages1.png"
+              />
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary={"Tesseract Design Labs"} />
@@ -109,7 +109,7 @@ function LeftSidebar() {
               alt="dp"
               width="20px"
               style={{ marginLeft: "20px" }}
-              src={createpromotion}
+              src="./resources/commonimages/createpromotion.png"
             />
           </ListItemAvatar>
           <ListItemText secondary={"Create Promotion"} />
@@ -122,7 +122,11 @@ function LeftSidebar() {
         </ListItem>
         <ListItem>
           <ListItemAvatar>
-            <img alt="birthday" width="36px" src={birthday} />
+            <img
+              alt="birthday"
+              width="36px"
+              src="./resources/commonimages/birthday.png"
+            />
           </ListItemAvatar>
           <ListItemText primary="Aman Raj's Birthday is today." />
         </ListItem>
@@ -148,13 +152,13 @@ function LeftSidebar() {
           </Grid>
         </ListItem>
         {userdata.friends.map((friend, i) => (
-          <ListItem>
+          <ListItem key={i}>
             <ListItemAvatar>
               <Avatar className={classes.small}>
                 <img
                   alt="dp"
                   width="36px"
-                  src={require(`./../../resources/friends/${friend.imagename}`)}
+                  src={`./resources/friends/${friend.imagename}`}
                 />
               </Avatar>
             </ListItemAvatar>
@@ -166,4 +170,4 @@ function LeftSidebar() {
   );
 }
 
-export default LeftSidebar;
+export default RightSidebar;

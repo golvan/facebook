@@ -1,5 +1,5 @@
 import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,7 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import AddIcon from "@material-ui/icons/Add";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import config from '../../config';
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: 40,
     borderRadius: "50px",
-    backgroundColor: fade("#eff2f5", 1),
+    backgroundColor: alpha("#eff2f5", 1),
     marginRight: theme.spacing(2),
     marginLeft: 0,
     [theme.breakpoints.up("sm")]: {
@@ -84,8 +84,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = () => {
-  let avatar = config.data.avatar;
-  let name = config.data.name;
+  const avatar = config.userdata.avatar;
+  const name = config.userdata.name;
   const classes = useStyles();
   return (
     <div className={classes.grow}>
@@ -96,7 +96,7 @@ const Header = () => {
               <Grid item lg={2} sm={2} container>
                 <svg
                   viewBox="0 0 36 36"
-                  class="a8c37x1j ms05siws hwsy1cff b7h9ocf4"
+                  className="a8c37x1j ms05siws hwsy1cff b7h9ocf4"
                   fill="url(#jsc_s_h)"
                   height="40"
                   width="40"
@@ -109,8 +109,8 @@ const Header = () => {
                       y2="0%"
                       id="jsc_s_h"
                     >
-                      <stop offset="0%" stop-color="#0062E0"></stop>
-                      <stop offset="100%" stop-color="#19AFFF"></stop>
+                      <stop offset="0%" stopColor="#0062E0"></stop>
+                      <stop offset="100%" stopColor="#19AFFF"></stop>
                     </linearGradient>
                   </defs>
                   <path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"></path>
@@ -149,7 +149,7 @@ const Header = () => {
               <Avatar
                 style={{ width: "30px", height: "30px", marginRight: "8px" }}
                 alt="img"
-                src={require(`./../../resources/profilepic/${avatar}`)}
+                src={`./resources/profilepic/${avatar}`}
               />
               <Typography style={{ marginRight: "16px", fontWeight: 500 }}>
                 {name}
@@ -170,7 +170,7 @@ const Header = () => {
                   <svg
                     viewBox="0 0 28 28"
                     alt=""
-                    class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 fzdkajry"
+                    className="a8c37x1j ms05siws hwsy1cff b7h9ocf4 fzdkajry"
                     height="20"
                     width="20"
                   >
@@ -188,7 +188,7 @@ const Header = () => {
                   <svg
                     viewBox="0 0 28 28"
                     alt=""
-                    class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 fzdkajry"
+                    className="a8c37x1j ms05siws hwsy1cff b7h9ocf4 fzdkajry"
                     height="20"
                     width="20"
                   >

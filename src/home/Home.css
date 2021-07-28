@@ -3,9 +3,11 @@
   display: flex;
   flex-direction: column;
 }
+
 .MuiTypography-body1 {
   font-weight: 500 !important;
 }
+
 .MuiPaper-rounded {
   border-radius: 8px !important;
 }

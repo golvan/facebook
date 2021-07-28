@@ -8,13 +8,9 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { userdata } from "./../../resources/data/userdata";
-import publicicon from "./../../resources/commonimages/publicicon.png";
-import like from "./../../resources/commonimages/likeaction.png";
-import comment from "./../../resources/commonimages/commentaction.png";
-import share from "./../../resources/commonimages/shareaction.png";
 import { Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,16 +35,24 @@ const useStyles = makeStyles((theme) => ({
 const Offers = (props) => {
   const classes = useStyles();
   const { offers } = props;
+  const userdata = config.userdata;
   if (!offers || offers.length === 0) return null;
-  let offerName = offers[0].Name;
-  let offerDesc = offers[0].ShortDescription;
-  let offerClickURL = offers[0].ClickThroughURL;
-  let offerImage = offers[0].ImageURL;
-  let offerTitle = offers[0].FBAdLogoTitle;
-  let offerLogo = offers[0].FBAdLogoUrl;
+  const offerName = offers[0].Name;
+  const offerDesc = offers[0].ShortDescription;
+  const offerClickURL = offers[0].ClickThroughURL;
+  const offerImage = offers[0].ImageURL;
+  const offerTitle =
+    offers[0].FBAdLogoTitle !== ""
+      ? offers[0].FBAdLogoTitle
+      : userdata.defaultfeedcaption;
+  const offerLogo =
+    offers[0].FBAdLogoUrl !== ""
+      ? offers[0].FBAdLogoUrl
+      : `./resources/feeds/${userdata.defaultfeedlogo}`;
 
   return userdata.posts.map((post, i) => (
     <div
+      key={i}
       style={{
         marginTop: "20px",
         width: "600px",
@@ -62,11 +66,7 @@ const Offers = (props) => {
         <CardHeader
           avatar={
             <Avatar className={classes.avatar}>
-              <img
-                alt="dp"
-                width="40px"
-                src={`${offerLogo}`}
-              />
+              <img alt="dp" width="40px" src={`${offerLogo}`} />
             </Avatar>
           }
           style={{ paddingTop: 0 }}
@@ -80,7 +80,7 @@ const Offers = (props) => {
             <div>
               <span>{post.time}</span>
               <img
-                src={publicicon}
+                src="./resources/commonimages/publicicon.png"
                 alt="pub"
                 style={{
                   width: "12px",
@@ -91,10 +91,8 @@ const Offers = (props) => {
             </div>
           }
         />
-        <CardContent style={{ paddingTop: 0 }}>
-          {offerDesc}
-        </CardContent>
-        <a href={offerClickURL} target="_blank">
+        <CardContent style={{ paddingTop: 0 }}>{offerDesc}</CardContent>
+        <a href={offerClickURL} target="_blank" rel="noreferrer">
           <CardMedia
             className={classes.media}
             image={`${offerImage}`}
@@ -106,6 +104,7 @@ const Offers = (props) => {
           <IconButton aria-label="add to favorites" style={{ padding: 0 }}>
             {post.reactions.map((reaction, i) => (
               <img
+                key={i}
                 style={{
                   width: "20px",
                   border: "2px solid #fff",
@@ -113,7 +112,7 @@ const Offers = (props) => {
                   right: `${4 * i}px`,
                   zIndex: 10 - i,
                 }}
-                src={require(`./../../resources/commonimages/${reaction}.svg`)}
+                src={`./resources/commonimages/${reaction}.svg`}
                 alt=""
               />
             ))}
@@ -129,21 +128,39 @@ const Offers = (props) => {
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="a" style={{ width: "20px" }} src={like} />}
+            startIcon={
+              <img
+                alt="a"
+                style={{ width: "20px" }}
+                src="./resources/commonimages/likeaction.png"
+              />
+            }
           >
             <span className="btntxt">Like</span>
           </Button>
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="b" style={{ width: "20px" }} src={comment} />}
+            startIcon={
+              <img
+                alt="b"
+                style={{ width: "20px" }}
+                src="./resources/commonimages/commentaction.png"
+              />
+            }
           >
             <span className="btntxt">Comment</span>
           </Button>
           <Button
             variant="text"
             className={classes.actionbuttons}
-            startIcon={<img alt="c" style={{ width: "20px" }} src={share} />}
+            startIcon={
+              <img
+                alt="c"
+                style={{ width: "20px" }}
+                src="./resources/commonimages/shareaction.png"
+              />
+            }
           >
             <span className="btntxt">Share</span>
           </Button>
@@ -151,6 +168,6 @@ const Offers = (props) => {
       </Card>
     </div>
   ));
-}
+};
 
 export default Offers;
